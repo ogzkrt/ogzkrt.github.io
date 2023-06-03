@@ -5,15 +5,306 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Collision Detection</title>
-    <link href="style.css" rel="stylesheet">
+    <title>Document</title>
+    <link rel="stylesheet" href="/src/style.css">
+
+
 </head>
 
 <body>
 
+    <div class="main">
 
-    <canvas id="canvas"></canvas>
-    <script type="module" src="src/main.js"></script>
+
+        <h1>Prisinors Dilemma Project</h1>
+
+        <h3>What is Prisinors Dilemma Game ? </h3>
+        <p>
+            The game played by two player. Players may chose to Cooperate or Defect. So there will be three
+            different scenarios.
+
+        </p>
+
+        <figure>
+            <div class="defect-coop-matrix">
+                <div class="defect-coop-matrix-cell"></div>
+                <div class="defect-coop-matrix-cell">Defect</div>
+                <div class="defect-coop-matrix-cell">Cooperator</div>
+                <div class="defect-coop-matrix-cell">Defect</div>
+                <div class="defect-coop-matrix-cell">P (punishment)</div>
+                <div class="defect-coop-matrix-cell">T (temptation)</div>
+                <div class="defect-coop-matrix-cell">Cooperator</div>
+                <div class="defect-coop-matrix-cell">S (sucker)</div>
+                <div class="defect-coop-matrix-cell">R (reward)</div>
+            </div>
+            <figcaption>Defect&Cooperator Matrix</figcaption>
+        </figure>
+        <ul>
+
+            <li>Both cooperate
+                <p>
+                    If both choose to cooperate: Both will get a pay-off of magnitude R (reward)
+                </p>
+            </li>
+            <li>Both defects
+                <p> If both defects both will get a pay-off of P (punishment) </p>
+            </li>
+            <li>One cooperate one defects
+                <p>The one who defects will get a games biggest pay-off which is T (temptation) </p>
+                <p>The one who cooperate will get a pay-off of S (suckers) </p>
+            </li>
+
+        </ul>
+        <p>
+            So if the values chosen like : T>R>P>S. The player who chose to play the role of Defect seems to have
+            best strategy but, if player always encounter with the players whose also choose defect, he will be
+            in disadvantage because R>P.
+        </p>
+
+        <p>
+            In this paper, they only consider two kind of Players. One of them will be always cooperating while
+            the other type will always defect.The game will be starting like this:
+        </p>
+
+        <p>
+            There will be a grid NxN and each cell in that grid will represent a player which might be either 'D' or 'C'
+            . In every round player will play the game with it's neighbours and will the get score from each of it's
+            game.
+            The score of the player will be the sum of the scores that it get from it's neighbours.
+
+            At the start of the next generation, the owner of cell will be decided by the checking highest score among
+            the
+            previous owner and its neighbours.
+        </p>
+        <p>They did not mention this in the paper but, after each generation scores should be resetted otherwise those
+            figures
+            can not be obtained.
+        </p>
+        <p>By the way, when they say neighbours it means 8 adjustgent cell.
+            UP,DOWN,LEFT,RIGHT,UP_LEFT,UP_RIGHT,DOWN_LEFT,DOWN_RIGHT</p>
+
+        <figure>
+            <div class="color-scheme">
+                <div class="color-scheme-cell"></div>
+                <div class="color-scheme-cell">Defect</div>
+                <div class="color-scheme-cell">Cooperator</div>
+                <div class="color-scheme-cell">Defect</div>
+                <div class="color-scheme-cell" style="background-color: red;">RED</div>
+                <div class="color-scheme-cell" style="background-color: yellow;">YELLOW</div>
+                <div class="color-scheme-cell">Cooperator</div>
+                <div class="color-scheme-cell" style="background-color: green;">GREEN</div>
+                <div class="color-scheme-cell" style="background-color: blue;">BLUE</div>
+            </div>
+            <figcaption>Color Scheme for Player Type</figcaption>
+        </figure>
+
+        <p>
+            Each type of player will have different color as it can be seen from the figure above.
+        <ul>
+            <li>Currently D and Previously also D ones will be Red</li>
+            <li>Currently D but Previously C ones will be Yellow</li>
+            <li>Currently C and Previously also C ones will be Blue</li>
+            <li>Currently C but Previously D ones will be Green</li>
+        </ul>
+        </p>
+
+        <figure name="fig_one">
+            <img src="/res/gp1.png">
+            <figcaption>Figure 1 : 3X3 Grid with Defect in the Center</figcaption>
+        </figure>
+
+        <p>
+            Here is the example how game works with simple 3x3 grid and when the T=1.75. In Figure 1, there is only one
+            D
+            and the rest is C.
+            Since all of D's neighbours are C. from each of them it will get T.
+            So the score will be Score = 8*T => 8*1.75 = 14. This will be the highest score for 3x3 grid, since the D is
+            at the
+            center all of the C's score will be lower than this, because they will get punishment.
+        </p>
+
+        <figure name="fig_one">
+            <img src="/res/gp2.png">
+            <figcaption>Figure 2 : 3X3 Grid with Defect in the Center</figcaption>
+        </figure>
+
+        <p>After first generation, all of the neighbours of the D's at the center will be converted to defect too.
+            Since these news defects were previously cooperators, they will be represented with different color like
+            Yellow.
+        </p>
+
+        <figure name="fig_one">
+            <img src="/res/gp3.png">
+            <figcaption>Figure 2 : 3X3 Grid with Defect in the Center</figcaption>
+        </figure>
+
+        <p>Another generation later, whole grid will be covered with Red because of their Score dominances.</p>
+
+
+
+
+
+
+        <p>Here is the first part of project. It can be also used
+            as homework 14.
+        </p>
+
+        <p>For the first two Figure in the paper. They started game in a 200x200 grid. Each cell in that grid
+            randomly assigned to be either Defect 'D' or Cooperator 'C'. Defect rate was %10. The Following figure shows
+            the initial distribution of D and C.
+        </p>
+
+        <figure>
+            <img src="/res/initial.png">
+            <figcaption>Initial picture of 200x200 board with %10 Defect Rate</figcaption>
+        </figure>
+
+
+
+        <figure>
+            <img src="/res/rand_b_1.76_timestep_200.png">
+            <figcaption>N=200 b = 1.76 Time Step = 200</figcaption>
+        </figure>
+        <p>The image above created with on a 200x200 grid with 10% defect rate
+            b = 1.76 when the time step is 200.
+        </p>
+
+        <figure>
+            <img src="/res/rand_b_1.86_time_step_200.png">
+            <figcaption>b=1.86 Time Step= 200</figcaption>
+        </figure>
+        <p>The image above created with on a 200x200 grid with 10% defect rate
+            b = 1.86 when the time step is 200.
+        </p>
+
+
+        <div class="freq_group">
+            <figure>
+                <img src="/res/freq/data_10.jpeg" alt="">
+                <figcaption>N=400x400 Initial 10% defect rate</figcaption>
+            </figure>
+            <figure>
+                <img src="/res/freq/data_20.jpeg" alt="">
+                <figcaption>N=400x400 Initial 20% defect rate</figcaption>
+            </figure>
+            <figure>
+                <img src="/res/freq/data_40.jpeg" alt="">
+                <figcaption>N=400x400 Initial 40% defect rate</figcaption>
+            </figure>
+        </div>
+        <p>
+            As it can be seen from the figures above. Even with the different initial Defect (Cooperator) rates,
+            frequiencies of Cooperators yields to the same value fc = 0.3.
+        </p>
+
+        <h2>Images in the Paper</h2>
+        <p>
+            Following figures obtained and they are identical to the figures represented
+            in the paper.
+        <ul>
+            <li>Grid Size : 99x99</li>
+            <li>Only one Defect at the center (row:50, col:50)</li>
+        </ul>
+        </p>
+        <div class="paper-nonrandom-images">
+
+            <figure>
+                <img src="/res/prisoner32.png">
+                <figcaption>Grid Size: 99x99, Time Step :30</figcaption>
+            </figure>
+
+            <figure>
+                <img src="/res/prisoner219.png">
+                <figcaption>Grid Size: 99x99, Time Step :217</figcaption>
+            </figure>
+            <figure>
+                <img src="/res/prisoner221.png">
+                <figcaption>Grid Size: 99x99, Time Step :219</figcaption>
+            </figure>
+            <figure>
+                <img src="/res/prisoner223.png">
+                <figcaption>Grid Size: 99x99, Time Step :221</figcaption>
+            </figure>
+        </div>
+
+        <p>
+            Here some examples with Grid Size:99x99 and one defect at center at different time steps.
+            It seems like this approach generates infinite figures like this.
+        </p>
+        <div class="image-group" , id="imageGroup">
+        </div>
+
+        <h1>SPACE</h1>
+
+        <div class="bloom-group" , id="bloomGroup"></div>
+
+
+        <div class="canvas-container">
+            <canvas id="canvas"></canvas>
+            <label for=" customRange1" class="form-label">Animation Speed</label>
+            <input type="range" class="form-range" id="speed" min="1" max="60">
+            <div class="label-container">
+                <label for="customRange1" class="form-label" id="anim-speed"></label>
+                <label id="timeStep">Time Step: </label>
+            </div>
+            <button id="btnStart">Start</button>
+            <button id="btnStop">Stop</button>
+            <button id="btnSave">Save Image</button>
+        </div>
+
+
+        <script>
+
+            let names = [
+                217, 252, 256, 257, 258, 259, 262, 266, 269, 270, 271, 272, 275, 276, 279, 281, 291, 294
+            ];
+
+
+            for (let n of names) {
+
+                let fig = document.createElement('figure');
+                let img = document.createElement('img');
+                let figCaption = document.createElement('figcaption')
+
+                img.src = `/res/carpets/prisoner${n}.png`;
+                figCaption.innerHTML = `Time step: ${n - 2}`;
+
+                fig.appendChild(img)
+                fig.appendChild(figCaption);
+
+                let images = document.getElementById('imageGroup');
+                images.appendChild(fig);
+            }
+
+
+        </script>
+
+
+        <script>
+            let images = document.getElementById('bloomGroup');
+
+            for (let i = 3; i < 33; i++) {
+
+                let fig = document.createElement('figure');
+                let img = document.createElement('img')
+                img.src = `/res/blossom/prisoner${i}.png`;
+                let figCap = document.createElement('figcaption');
+                figCap.innerHTML = `Time step:${i - 2}`;
+
+                fig.appendChild(img);
+                fig.appendChild(figCap);
+
+
+                images.appendChild(fig);
+            }
+        </script>
+
+
+    </div>
+
+
+    <script src="/src/code.js"></script>
+
 </body>
 
 </html>
