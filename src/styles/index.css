@@ -1,3 +1,29 @@
 #header {
     border: 1px solid green;
+    flex: 1;
+}
+
+#body {
+    border: 1px solid green;
+    flex: 5;
+}
+
+#footer {
+    flex: 1;
+    border: 1px solid green;
+}
+
+#mainpage {
+
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    height: 1000px;
+
+}
+
+#contact {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px;
 }
