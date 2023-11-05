@@ -1,0 +1,62 @@
+#container {
+    display: flex;
+    justify-content: center;
+}
+
+#main {
+
+    display: flex;
+    border: 1px solid black;
+    width: 70%;
+    height: 100vh;
+
+}
+
+#left-bar {
+
+    border: 1px solid saddlebrown;
+    background-color: rgb(105, 96, 90);
+    width: 40%;
+
+}
+
+#personal-info {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    width: 100%;
+    border: 1px solid green;
+    height: 500px;
+
+
+    color: aliceblue;
+}
+
+#name {
+    font-weight: 700;
+    font-size: 24.5pt;
+    letter-spacing: inherit;
+    font-family: Verdana;
+    line-height: 37px;
+    padding-bottom: 0.2em;
+}
+
+#linkedin {}
+
+.personal-info-text {
+    font-size: x-large;
+    margin-left: 10px;
+    margin-bottom: 2px;
+
+}
+
+
+
+
+#content {
+
+    border: 1px solid green;
+    background-color: rgb(240, 246, 246);
+    width: 60%;
+
+}
