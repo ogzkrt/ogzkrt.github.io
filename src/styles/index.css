@@ -53,11 +53,12 @@ img {
 }
 
 #nav {
-    width: 500px;
+    width: 1000px;
     border: 1px solid green;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     font-size: xx-large;
+    margin: 10px;
 }
 
 #nav-items {
